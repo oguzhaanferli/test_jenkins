@@ -15,6 +15,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh """
+                docker container run --restart always -d -p 5000:5000 --name web
+                """
             }
         }
     }
